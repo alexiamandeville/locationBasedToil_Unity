@@ -604,14 +604,14 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
 
             else
             {
-                GameObject dropItem = (GameObject)Instantiate(GetComponent<ItemOnObject>().item.itemModel);
+                /*GameObject dropItem = (GameObject)Instantiate(GetComponent<ItemOnObject>().item.itemModel);
                 dropItem.AddComponent<PickUpItem>();
                 dropItem.GetComponent<PickUpItem>().item = this.gameObject.GetComponent<ItemOnObject>().item;               
                 dropItem.transform.localPosition = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
                 inventory.OnUpdateItemList();
                 if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() != null)
                     inventory.GetComponent<Inventory>().UnEquipItem1(dropItem.GetComponent<PickUpItem>().item);
-                Destroy(this.gameObject);
+                Destroy(this.gameObject);*/
 
             }
         }

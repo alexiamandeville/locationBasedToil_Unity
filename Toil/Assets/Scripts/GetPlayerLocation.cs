@@ -1,23 +1,29 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GetPlayerLocation : MonoBehaviour {
 
 	public Text latitudeLoc;
 	public Text longitudeLoc;
+	public ItemDataBaseList myItems;
 
 	void Start(){
 		StartCoroutine ("StartLoc");
 	}
 
+	//update player location 
 	void Update(){
 		// Access granted and location value could be retrieved
-		print("Location: " + Input.location.lastData.latitude + " " + Input.location.lastData.longitude + " " + Input.location.lastData.altitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp);
+		//print("Location: " + Input.location.lastData.latitude + " " + Input.location.lastData.longitude + " " + Input.location.lastData.altitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp);
 		latitudeLoc.text = Input.location.lastData.latitude.ToString();
 		longitudeLoc.text = Input.location.lastData.longitude.ToString();
+
+		notifyPlayer ();
 	}
 
+	//finds player location
 	IEnumerator StartLoc()
 		{
 			// First, check if user has location service enabled
@@ -53,4 +59,13 @@ public class GetPlayerLocation : MonoBehaviour {
 			// Stop service if there is no need to query location updates continuously
 			//Input.location.Stop();
 		}
+
+	//player location notifications, items
+	void notifyPlayer(){
+		foreach (Item item in myItems.itemList) {
+			//print(item.itemDesc);
+			//check to see if player is in range of lat,long
+		}
+	}
+
 	}

@@ -27,7 +27,7 @@ public class RandomLootSystem : MonoBehaviour
             float z = Random.Range(5, terrain.terrainData.size.z - 5);
 
 
-            if (inventoryItemList.itemList[randomNumber].itemModel == null)
+            /*if (inventoryItemList.itemList[randomNumber].itemModel == null)
                 counter--;
             else
             {
@@ -36,7 +36,7 @@ public class RandomLootSystem : MonoBehaviour
                 item.item = inventoryItemList.itemList[randomNumber];
 
                 randomLootItem.transform.localPosition = new Vector3(x, 0, z);
-            }
+            }*/
         }
 
     }

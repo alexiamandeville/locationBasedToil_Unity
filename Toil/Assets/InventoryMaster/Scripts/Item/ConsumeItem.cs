@@ -107,11 +107,11 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                         }
                                         if (this == null)
                                         {
-                                            GameObject dropItem = (GameObject)Instantiate(otherSlotItem.itemModel);
+                                            /*GameObject dropItem = (GameObject)Instantiate(otherSlotItem.itemModel);
                                             dropItem.AddComponent<PickUpItem>();
                                             dropItem.GetComponent<PickUpItem>().item = otherSlotItem;
                                             dropItem.transform.localPosition = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
-                                            inventory.OnUpdateItemList();
+                                            inventory.OnUpdateItemList();*/
                                         }
                                         else
                                         {
@@ -238,11 +238,11 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                             }
                             if (this == null)
                             {
-                                GameObject dropItem = (GameObject)Instantiate(otherSlotItem.itemModel);
+                                /*GameObject dropItem = (GameObject)Instantiate(otherSlotItem.itemModel);
                                 dropItem.AddComponent<PickUpItem>();
                                 dropItem.GetComponent<PickUpItem>().item = otherSlotItem;
                                 dropItem.transform.localPosition = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
-                                inventory.OnUpdateItemList();
+                                inventory.OnUpdateItemList();*/
                             }
                             else
                             {

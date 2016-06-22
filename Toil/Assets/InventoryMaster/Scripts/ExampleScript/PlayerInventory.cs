@@ -100,7 +100,7 @@ public class PlayerInventory : MonoBehaviour
 
     void changeInventorySize(int size)
     {
-        dropTheRestItems(size);
+        //dropTheRestItems(size);
 
         if (mainInventory == null)
             mainInventory = inventory.GetComponent<Inventory>();
@@ -141,7 +141,7 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    void dropTheRestItems(int size)
+    /*void dropTheRestItems(int size)
     {
         if (size < mainInventory.ItemsInInventory.Count)
         {
@@ -153,7 +153,7 @@ public class PlayerInventory : MonoBehaviour
                 dropItem.transform.localPosition = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
             }
         }
-    }
+    }*/
 
     void Start()
     {
