@@ -9,6 +9,9 @@ public class GetPlayerLocation : MonoBehaviour {
 	public Text longitudeLoc;
 	public ItemDataBaseList myItems;
 
+	public float myLat;
+	public float myLong;
+
 	void Start(){
 		StartCoroutine ("StartLoc");
 	}
@@ -17,10 +20,13 @@ public class GetPlayerLocation : MonoBehaviour {
 	void Update(){
 		// Access granted and location value could be retrieved
 		//print("Location: " + Input.location.lastData.latitude + " " + Input.location.lastData.longitude + " " + Input.location.lastData.altitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp);
-		latitudeLoc.text = Input.location.lastData.latitude.ToString();
-		longitudeLoc.text = Input.location.lastData.longitude.ToString();
+		//latitudeLoc.text = Input.location.lastData.latitude.ToString();
+		//longitudeLoc.text = Input.location.lastData.longitude.ToString();
 
-		notifyPlayer ();
+		//update my current location
+		myLat = Input.location.lastData.latitude;
+		myLong = Input.location.lastData.longitude;
+
 	}
 
 	//finds player location
@@ -60,12 +66,7 @@ public class GetPlayerLocation : MonoBehaviour {
 			//Input.location.Stop();
 		}
 
-	//player location notifications, items
-	void notifyPlayer(){
-		foreach (Item item in myItems.itemList) {
-			//print(item.itemDesc);
-			//check to see if player is in range of lat,long
-		}
-	}
 
 	}
+
+	

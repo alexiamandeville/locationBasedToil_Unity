@@ -1,11 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
 
 public class GoogleMap : MonoBehaviour
 {
+	public GetPlayerLocation mylocation;
 
-	public GetPlayerLocation myLocation;
+	public Text latitudeLoc;
+	public Text longitudeLoc;
 
 	public enum MapType
 	{
@@ -23,65 +25,95 @@ public class GoogleMap : MonoBehaviour
 	public bool doubleResolution = false;
 	public GoogleMapMarker[] markers;
 	public GoogleMapPath[] paths;
-	
+			
 	void Start() {
 		if(loadOnStart) Refresh();	
+	}
+
+	void Update(){
+		latitudeLoc.text = mylocation.myLat.ToString ();
+		longitudeLoc.text = mylocation.myLong.ToString ();
+
 	}
 	
 	public void Refresh() {
 		if(autoLocateCenter && (markers.Length == 0 && paths.Length == 0)) {
 			Debug.LogError("Auto Center will only work if paths or markers are used.");	
 		}
+
 		StartCoroutine(_Refresh());
+
 	}
-	
+		
+
 	IEnumerator _Refresh ()
 	{
-		var url = "http://maps.googleapis.com/maps/api/staticmap";
-		var qs = "";
-		if (!autoLocateCenter) {
-			if (centerLocation.address != "")
-				qs += "center=" + WWW.UnEscapeURL (centerLocation.address);
-			else {
-				qs += "center=" + WWW.UnEscapeURL (string.Format ("{0},{1}", myLocation.latitudeLoc, myLocation.longitudeLoc));
-			}
+		while (true) {
+			var url = "http://maps.googleapis.com/maps/api/staticmap";
+			var qs = "";
+			if (!autoLocateCenter) {
+				if (centerLocation.address != "")
+					qs += "center=" + WWW.UnEscapeURL (centerLocation.address);
+				else {
+					//centerLocation.latitude = 28;
+					//centerLocation.longitude = -81;
+					qs += "center=" + WWW.UnEscapeURL (string.Format ("{0},{1}", mylocation.myLat, mylocation.myLong));
+				}
 		
-			qs += "&zoom=" + zoom.ToString ();
-		}
-		qs += "&size=" + WWW.UnEscapeURL (string.Format ("{0}x{0}", size));
-		qs += "&scale=" + (doubleResolution ? "2" : "1");
-		qs += "&maptype=" + mapType.ToString ().ToLower ();
-		var usingSensor = false;
+				qs += "&zoom=" + zoom.ToString ();
+			}
+			qs += "&size=" + WWW.UnEscapeURL (string.Format ("{0}x{0}", size));
+			qs += "&scale=" + (doubleResolution ? "2" : "1");
+			qs += "&maptype=" + mapType.ToString ().ToLower ();
+
+			//map styling ////
+			//////////////////
+
+			//set geometry style to map
+			qs += "&style=feature:landscape" + "|" + "element:geometry.fill" + "|" + "color:0x000000";
+			//set label style to map
+			qs += "&style=feature:all" + "|" + "element:labels" + "|" + "visibility:off";
+			//set style to roads
+			qs += "&style=feature:road.local" + "|" + "element:geometry" + "|" + "color:0x823292";
+
+			//////////
+
+			var usingSensor = false;
 #if UNITY_IPHONE
 		usingSensor = Input.location.isEnabledByUser && Input.location.status == LocationServiceStatus.Running;
 #endif
-		qs += "&sensor=" + (usingSensor ? "true" : "false");
+			qs += "&sensor=" + (usingSensor ? "true" : "false");
 		
-		foreach (var i in markers) {
-			qs += "&markers=" + string.Format ("size:{0}|color:{1}|label:{2}", i.size.ToString ().ToLower (), i.color, i.label);
-			foreach (var loc in i.locations) {
-				if (loc.address != "")
-					qs += "|" + WWW.UnEscapeURL (loc.address);
-				else
-					qs += "|" + WWW.UnEscapeURL (string.Format ("{0},{1}", loc.latitude, loc.longitude));
+			//create markers
+			foreach (var i in markers) {
+				qs += "&markers=" + string.Format ("size:{0}|color:{1}|label:{2}", i.size.ToString ().ToLower (), i.color, i.label);
+				foreach (var loc in i.locations) {
+					if (loc.address != "")
+						qs += "|" + WWW.UnEscapeURL (loc.address);
+					else
+						qs += "|" + WWW.UnEscapeURL (string.Format ("{0},{1}", loc.latitude, loc.longitude));
+				}
 			}
-		}
 		
-		foreach (var i in paths) {
-			qs += "&path=" + string.Format ("weight:{0}|color:{1}", i.weight, i.color);
-			if(i.fill) qs += "|fillcolor:" + i.fillColor;
-			foreach (var loc in i.locations) {
-				if (loc.address != "")
-					qs += "|" + WWW.UnEscapeURL (loc.address);
-				else
-					qs += "|" + WWW.UnEscapeURL (string.Format ("{0},{1}", loc.latitude, loc.longitude));
+			//create paths
+			foreach (var i in paths) {
+				qs += "&path=" + string.Format ("weight:{0}|color:{1}", i.weight, i.color);
+				if (i.fill)
+					qs += "|fillcolor:" + i.fillColor;
+				foreach (var loc in i.locations) {
+					if (loc.address != "")
+						qs += "|" + WWW.UnEscapeURL (loc.address);
+					else
+						qs += "|" + WWW.UnEscapeURL (string.Format ("{0},{1}", loc.latitude, loc.longitude));
+				}
 			}
+				
+			var req = new WWW (url + "?" + qs);
+			yield return req;
+			GetComponent<Renderer> ().material.mainTexture = req.texture;
+			print (req.url);
+			yield return new WaitForSeconds (15f);
 		}
-		
-		
-		var req = new WWW (url + "?" + qs);
-		yield return req;
-		GetComponent<Renderer>().material.mainTexture = req.texture;
 	}
 	
 	
@@ -134,3 +166,4 @@ public class GoogleMapPath
 	public GoogleMapColor fillColor;
 	public GoogleMapLocation[] locations;	
 }
+	

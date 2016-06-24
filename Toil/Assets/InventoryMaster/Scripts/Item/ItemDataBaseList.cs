@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[System.Serializable]
 public class ItemDataBaseList : ScriptableObject
 {             //The scriptableObject where the Item getting stored which you create(ItemDatabase)
 
