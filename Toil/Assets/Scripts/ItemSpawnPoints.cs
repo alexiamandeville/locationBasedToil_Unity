@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ItemSpawnPoints : MonoBehaviour {
@@ -9,6 +10,8 @@ public class ItemSpawnPoints : MonoBehaviour {
 	public GoogleMap myMap;
 
 	public GameObject itemPanel;
+	public Text itemFound;
+
 
 	private float _locationAway = 0.00100f;
 
@@ -24,8 +27,9 @@ public class ItemSpawnPoints : MonoBehaviour {
 			foreach (GoogleMapLocation location in marker.locations) {
 
 				//if player is _locationAway away from item/marker
-				if ((mylocation.myLat < location.latitude + _locationAway && mylocation.myLat < location.latitude - _locationAway) || (mylocation.myLong < location.longitude + _locationAway && mylocation.myLong < location.longitude - _locationAway)) {
-					itemPanel.SetActive (true);
+				if ((mylocation.myLat < location.latitude + _locationAway && mylocation.myLat > location.latitude - _locationAway) || (mylocation.myLong < location.longitude + _locationAway && mylocation.myLong > location.longitude - _locationAway)) {
+					//itemPanel.SetActive (true);
+					itemFound.text = "Item Found!";
 				}
 
 			}
