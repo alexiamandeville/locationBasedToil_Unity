@@ -218,12 +218,12 @@ pip-log.txt
 #############
 ## Unity
 #############
-Temp/
-Library/
-obj/
-Assembly-CSharp.csproj
-Assembly-CSharp-Editor.csproj
-Toil.CSharp.csproj
-Toil.CSharp.Editor.csproj
-Toil.sln
-Toil.userprefs
+Toil/Temp/
+Toil/Library/
+Toil/obj/
+Toil/Assembly-CSharp.csproj
+Toil/Assembly-CSharp-Editor.csproj
+Toil/Toil.CSharp.csproj
+Toil/Toil.CSharp.Editor.csproj
+Toil/Toil.sln
+Toil/Toil.userprefs
