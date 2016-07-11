@@ -30,6 +30,7 @@ public class ItemSpawnPoints : MonoBehaviour {
 				if ((mylocation.myLat < location.latitude + _locationAway && mylocation.myLat > location.latitude - _locationAway) || (mylocation.myLong < location.longitude + _locationAway && mylocation.myLong > location.longitude - _locationAway)) {
 					//itemPanel.SetActive (true);
 					itemFound.text = "Item Found!";
+					//Handheld.Vibrate();
 				}
 
 			}

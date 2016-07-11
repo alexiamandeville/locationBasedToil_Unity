@@ -70,11 +70,18 @@ public class GoogleMap : MonoBehaviour
 			//////////////////
 
 			//set geometry style to map
-			qs += "&style=feature:landscape" + "|" + "element:geometry.fill" + "|" + "color:0x000000";
+			qs += "&style=feature:landscape" + "|" + "element:geometry.fill" + "|" + "color:0x150C1A";
 			//set label style to map
 			qs += "&style=feature:all" + "|" + "element:labels" + "|" + "visibility:off";
 			//set style to roads
-			qs += "&style=feature:road.local" + "|" + "element:geometry" + "|" + "color:0x823292";
+			qs += "&style=feature:road" + "|" + "element:geometry" + "|" + "color:0x171628";
+			//set style to points of interest
+			qs += "&style=feature:poi" + "|" + "element:geometry" + "|" + "color:0x171628";
+
+			//water
+			qs += "&style=feature:water" + "|" + "element:geometry" + "|" + "color:0x212B47";
+
+			qs += "&style=feature:administrative" + "|" + "visibility:off";
 
 			//////////
 
