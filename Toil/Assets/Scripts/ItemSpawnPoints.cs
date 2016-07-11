@@ -6,7 +6,7 @@ public class ItemSpawnPoints : MonoBehaviour {
 
 	public GetPlayerLocation mylocation;
 	public Spawner[] spawnPoints;
-	public Item itemList;
+	static ItemDataBaseList inventoryItemList;
 	public GoogleMap myMap;
 
 	public GameObject itemPanel;
@@ -16,19 +16,20 @@ public class ItemSpawnPoints : MonoBehaviour {
 	private float _locationAway = 0.00100f;
 
 	void Start(){
-		//itemList = (ItemDataBaseList)Resources.Load("ItemDatabase");
 
+		//spawnPoints = marker points add this for loop
 	}
 
 	void Update(){
-		
+
 		//if player gets close to marker lat,long then notify
 		foreach (GoogleMapMarker marker in myMap.markers) {
 			foreach (GoogleMapLocation location in marker.locations) {
 
 				//if player is _locationAway away from item/marker
 				if ((mylocation.myLat < location.latitude + _locationAway && mylocation.myLat > location.latitude - _locationAway) || (mylocation.myLong < location.longitude + _locationAway && mylocation.myLong > location.longitude - _locationAway)) {
-					//itemPanel.SetActive (true);
+					//turn on found itme panel for collection
+					itemPanel.SetActive (true);
 					itemFound.text = "Item Found!";
 					//Handheld.Vibrate();
 				}
@@ -36,7 +37,7 @@ public class ItemSpawnPoints : MonoBehaviour {
 			}
 		}
 
-				//if player is in vici);nty of marker, then pop up item
+		//if player is in vicinty of marker, then pop up item
 	}
 }
 
@@ -56,5 +57,3 @@ public enum SpawnLevel
 	Four = 4,
 	Five = 5
 }
-
-

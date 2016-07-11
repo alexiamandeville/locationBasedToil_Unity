@@ -48,7 +48,7 @@ public class InventoryDesign : MonoBehaviour
         inventoryTitleText = transform.GetChild(0).GetComponent<Text>();
         if (GetComponent<Hotbar>() == null)
         {
-            inventoryCrossRectTransform = transform.GetChild(2).GetComponent<RectTransform>();
+            //inventoryCrossRectTransform = transform.GetChild(2).GetComponent<RectTransform>();
             inventoryCrossImage = transform.GetChild(2).GetComponent<Image>();
         }
         inventoryDesign = GetComponent<Image>();
