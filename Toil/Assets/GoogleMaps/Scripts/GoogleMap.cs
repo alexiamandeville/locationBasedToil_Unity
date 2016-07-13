@@ -70,16 +70,16 @@ public class GoogleMap : MonoBehaviour
 			//////////////////
 
 			//set geometry style to map
-			qs += "&style=feature:landscape" + "|" + "element:geometry.fill" + "|" + "color:0x150C1A";
+			qs += "&style=feature:landscape" + "|" + "element:geometry.fill" + "|" + "color:0x23142b";
 			//set label style to map
 			qs += "&style=feature:all" + "|" + "element:labels" + "|" + "visibility:off";
 			//set style to roads
-			qs += "&style=feature:road" + "|" + "element:geometry" + "|" + "color:0x171628";
+			qs += "&style=feature:road" + "|" + "element:geometry" + "|" + "color:0x2a2849";
 			//set style to points of interest
-			qs += "&style=feature:poi" + "|" + "element:geometry" + "|" + "color:0x171628";
+			qs += "&style=feature:poi" + "|" + "element:geometry" + "|" + "color:0x2a2849";
 
 			//water
-			qs += "&style=feature:water" + "|" + "element:geometry" + "|" + "color:0x212B47";
+			qs += "&style=feature:water" + "|" + "element:geometry" + "|" + "color:0x293658";
 
 			qs += "&style=feature:administrative" + "|" + "visibility:off";
 

@@ -193,7 +193,7 @@ public class IM_Manager : EditorWindow
 
                     inventoryItemList.itemList[inventoryItemList.itemList.Count - 1].itemType = (ItemType)EditorGUILayout.EnumPopup("Item Type", inventoryItemList.itemList[inventoryItemList.itemList.Count - 1].itemType, GUILayout.Width(position.width - 33));                                      //the itemtype which you want to have can be selected with the enumpopup
                     inventoryItemList.itemList[inventoryItemList.itemList.Count - 1].maxStack = EditorGUILayout.IntField("Max Stack", inventoryItemList.itemList[inventoryItemList.itemList.Count - 1].maxStack, GUILayout.Width(position.width - 33));
-                    inventoryItemList.itemList[inventoryItemList.itemList.Count - 1].rarity = EditorGUILayout.IntSlider("Rarity", inventoryItemList.itemList[inventoryItemList.itemList.Count - 1].rarity, 0, 100);
+                    inventoryItemList.itemList[inventoryItemList.itemList.Count - 1].rarity = EditorGUILayout.IntSlider("Rarity", inventoryItemList.itemList[inventoryItemList.itemList.Count - 1].rarity, 0, 10);
                     GUILayout.BeginVertical("Box", GUILayout.Width(position.width - 33));
                     showItemAttributes = EditorGUILayout.Foldout(showItemAttributes, "Item attributes");
                     if (showItemAttributes)
@@ -298,7 +298,7 @@ public class IM_Manager : EditorWindow
                             //inventoryItemList.itemList[i].itemModel = (GameObject)EditorGUILayout.ObjectField("Item Model", inventoryItemList.itemList[i].itemModel, typeof(GameObject), false, GUILayout.Width(position.width - 45));      //objectfield for the itemmodel for your new item
                             inventoryItemList.itemList[i].itemType = (ItemType)EditorGUILayout.EnumPopup("Item Type", inventoryItemList.itemList[i].itemType, GUILayout.Width(position.width - 45));                                      //the itemtype which you want to have can be selected with the enumpopup
                             inventoryItemList.itemList[i].maxStack = EditorGUILayout.IntField("Max Stack", inventoryItemList.itemList[i].maxStack, GUILayout.Width(position.width - 45));
-                            inventoryItemList.itemList[i].rarity = EditorGUILayout.IntSlider("Rarity", inventoryItemList.itemList[i].rarity, 0, 100);
+                            inventoryItemList.itemList[i].rarity = EditorGUILayout.IntSlider("Rarity", inventoryItemList.itemList[i].rarity, 0, 10);
                             GUILayout.BeginVertical("Box", GUILayout.Width(position.width - 45));
                             showItemAttributes = EditorGUILayout.Foldout(showItemAttributes, "Item attributes");
                             if (showItemAttributes)
