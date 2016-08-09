@@ -10,37 +10,53 @@ public class ItemSpawnPoints : MonoBehaviour {
 	public GoogleMap myMap;
 
 	public GameObject itemPanel;
-	public Text itemFound;
+	public bool isItemFound;
+
+	private float timestamp;
+
 
 
 	private float _locationAway = 0.00100f;
 
-	void Start(){
-
-		//spawnPoints = marker points add this for loop
-	}
-
 	void Update(){
 
+
+		if (timestamp < Time.time) {
+			
 		//if player gets close to marker lat,long then notify
 		foreach (GoogleMapMarker marker in myMap.markers) {
 			foreach (GoogleMapLocation location in marker.locations) {
 
-				//if player is _locationAway away from item/marker
-				if ((mylocation.myLat < location.latitude + _locationAway && mylocation.myLat > location.latitude - _locationAway) || (mylocation.myLong < location.longitude + _locationAway && mylocation.myLong > location.longitude - _locationAway)) {
-					//turn on found itme panel for collection
-					itemPanel.SetActive (true);
-					itemFound.text = "Item Found!";
-					//Handheld.Vibrate();
+													
+					//if player is _locationAway away from item/marker
+					if ((mylocation.myLat < location.latitude + _locationAway && mylocation.myLat > location.latitude - _locationAway) || (mylocation.myLong < location.longitude + _locationAway && mylocation.myLong > location.longitude - _locationAway)) {
+						ItemFound ();
+
+					}
 				}
 
 			}
 		}
 
-		//if player is in vicinty of marker, then pop up item
 	}
-}
 
+	void ItemFound(){
+		
+
+		//cooldown in seconds
+		timestamp = Time.time + 900;
+
+		//turn on found item panel for collection
+		itemPanel.SetActive (true);
+
+		//send notification
+		LocalNotification.SendNotification(1, 0, "Item found!", "", new Color32(0xff, 0x44, 0x44, 255)); 
+
+		Handheld.Vibrate();
+	}
+
+}
+	
 //i dont need this because the level will be on the items
 [System.Serializable]
 public class Spawner
