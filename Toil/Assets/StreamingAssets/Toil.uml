@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SaveData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <fileName>Toil</fileName>
+  <serializedTypes />
+  <serializedData>
+    <DataContainer>
+      <key>Level</key>
+      <value xsi:type="xsd:float">1</value>
+    </DataContainer>
+    <DataContainer>
+      <key>XP</key>
+      <value xsi:type="xsd:float">1</value>
+    </DataContainer>
+  </serializedData>
+</SaveData>
