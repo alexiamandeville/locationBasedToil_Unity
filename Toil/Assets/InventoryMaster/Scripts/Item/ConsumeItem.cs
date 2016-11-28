@@ -93,7 +93,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     if (eS.transform.GetChild(1).GetChild(i).childCount != 0)
                                     {
                                         GameObject otherItemFromCharacterSystem = eS.transform.GetChild(1).GetChild(i).GetChild(0).gameObject;
-                                        Item otherSlotItem = otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item;
                                         if (item.itemType == ItemType.UFPS_Weapon)
                                         {
                                             inventory.UnEquipItem1(otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item);
@@ -224,7 +223,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                         if (eS.transform.GetChild(1).GetChild(i).childCount != 0)
                         {
                             GameObject otherItemFromCharacterSystem = eS.transform.GetChild(1).GetChild(i).GetChild(0).gameObject;
-                            Item otherSlotItem = otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item;
                             if (item.itemType == ItemType.UFPS_Weapon)
                             {
                                 inventory.UnEquipItem1(otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item);

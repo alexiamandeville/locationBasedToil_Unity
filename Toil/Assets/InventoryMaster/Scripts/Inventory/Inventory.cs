@@ -6,6 +6,8 @@ using UnityEditor;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+[System.Serializable]
+
 public class Inventory : MonoBehaviour
 {
     //Prefabs
@@ -17,8 +19,6 @@ public class Inventory : MonoBehaviour
     private GameObject prefabSlotContainer;
     [SerializeField]
     private GameObject prefabItem;
-    [SerializeField]
-    private GameObject prefabDraggingItemContainer;
     [SerializeField]
     private GameObject prefabPanel;
 
@@ -35,8 +35,6 @@ public class Inventory : MonoBehaviour
     private Image PanelImage;
     [SerializeField]
     private GameObject SlotContainer;
-    [SerializeField]
-    private GameObject DraggingItemContainer;
     [SerializeField]
     private RectTransform SlotContainerRectTransform;
     [SerializeField]
@@ -102,6 +100,7 @@ public class Inventory : MonoBehaviour
 
         inputManagerDatabase = (InputManager)Resources.Load("InputManager");
     }
+		
 
     public void sortItems()
     {
@@ -130,6 +129,7 @@ public class Inventory : MonoBehaviour
     void Update()
     {
         updateItemIndex();
+
     }
 
 
@@ -219,8 +219,6 @@ public class Inventory : MonoBehaviour
             GameObject panel = (GameObject)Instantiate(Resources.Load("Prefabs/Panel - Inventory") as GameObject);
             panel.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
             panel.transform.SetParent(Canvas.transform, true);
-            GameObject draggingItem = (GameObject)Instantiate(Resources.Load("Prefabs/DraggingItem") as GameObject);
-            draggingItem.transform.SetParent(Canvas.transform, true);
             Inventory temp = panel.AddComponent<Inventory>();
             Instantiate(Resources.Load("Prefabs/EventSystem") as GameObject);
             panel.AddComponent<InventoryDesign>();
@@ -233,9 +231,6 @@ public class Inventory : MonoBehaviour
             panel.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
             Inventory temp = panel.AddComponent<Inventory>();
             panel.AddComponent<InventoryDesign>();
-            DestroyImmediate(GameObject.FindGameObjectWithTag("DraggingItem"));
-            GameObject draggingItem = (GameObject)Instantiate(Resources.Load("Prefabs/DraggingItem") as GameObject);
-            draggingItem.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, true);
             temp.getPrefabs();
         }
     }
@@ -261,8 +256,6 @@ public class Inventory : MonoBehaviour
             prefabItem = Resources.Load("Prefabs/Item") as GameObject;
         if (itemDatabase == null)
             itemDatabase = (ItemDataBaseList)Resources.Load("ItemDatabase");
-        if (prefabDraggingItemContainer == null)
-            prefabDraggingItemContainer = Resources.Load("Prefabs/DraggingItem") as GameObject;
         if (prefabPanel == null)
             prefabPanel = Resources.Load("Prefabs/Panel - Inventory") as GameObject;
 
@@ -658,6 +651,7 @@ public class Inventory : MonoBehaviour
         stackableSettings();
         updateItemList();
     }
+		
 
     public void updateIconSize(int iconSize)
     {

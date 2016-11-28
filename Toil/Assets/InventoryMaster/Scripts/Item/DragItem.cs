@@ -19,7 +19,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        rectTransformSlot = GameObject.FindGameObjectWithTag("DraggingItem").GetComponent<RectTransform>();
+        //rectTransformSlot = GameObject.FindGameObjectWithTag("DraggingItem").GetComponent<RectTransform>();
         inventory = transform.parent.parent.parent.GetComponent<Inventory>();
         draggedItemBox = GameObject.FindGameObjectWithTag("DraggingItem").transform;
     }

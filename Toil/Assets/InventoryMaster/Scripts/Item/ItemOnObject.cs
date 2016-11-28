@@ -16,7 +16,7 @@ public class ItemOnObject : MonoBehaviour                   //Saves the Item in 
         GetComponent<ConsumeItem>().item = item;
     }
 
-    void Start()
+    void Awake()
     {
         image = transform.GetChild(0).GetComponent<Image>();
         transform.GetChild(0).GetComponent<Image>().sprite = item.itemIcon;                 //set the sprite of the Item 

@@ -5,7 +5,6 @@ using System.Collections;
 public class ItemSpawnPoints : MonoBehaviour {
 
 	public GetPlayerLocation mylocation;
-	public Spawner[] spawnPoints;
 	static ItemDataBaseList inventoryItemList;
 	public GoogleMap myMap;
 
@@ -50,26 +49,10 @@ public class ItemSpawnPoints : MonoBehaviour {
 		itemPanel.SetActive (true);
 
 		//send notification
-		LocalNotification.SendNotification(1, 0, "Item found!", "", new Color32(0xff, 0x44, 0x44, 255)); 
+		//LocalNotification.SendNotification(1, 0, "Item found!", "", new Color32(0xff, 0x44, 0x44, 255)); 
 
-		Handheld.Vibrate();
+		//Handheld.Vibrate();
 	}
 
 }
 	
-//i dont need this because the level will be on the items
-[System.Serializable]
-public class Spawner
-{
-	public SpawnLevel level;
-}
-
-//i dont need this because the level will be on the items
-public enum SpawnLevel
-{
-	One = 1,
-	Two = 2,
-	Three = 3,
-	Four = 4,
-	Five = 5
-}

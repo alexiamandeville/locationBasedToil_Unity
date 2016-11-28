@@ -1,6 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{AF8B1542-8141-8998-68CE-B3CB15D04B30}") = "Toil", "Assembly-CSharp-firstpass.csproj", "{1951C1FF-5BAF-8270-8023-C082F3928BED}"
+EndProject
 Project("{AF8B1542-8141-8998-68CE-B3CB15D04B30}") = "Toil", "Assembly-CSharp.csproj", "{6C6BAF82-ACCF-6733-340B-EBBAF1F57104}"
 EndProject
 Project("{AF8B1542-8141-8998-68CE-B3CB15D04B30}") = "Toil", "Assembly-CSharp-Editor.csproj", "{341BE2E6-F217-76A5-F10D-B833D7A9BED6}"
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1951C1FF-5BAF-8270-8023-C082F3928BED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1951C1FF-5BAF-8270-8023-C082F3928BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1951C1FF-5BAF-8270-8023-C082F3928BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1951C1FF-5BAF-8270-8023-C082F3928BED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C6BAF82-ACCF-6733-340B-EBBAF1F57104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6C6BAF82-ACCF-6733-340B-EBBAF1F57104}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C6BAF82-ACCF-6733-340B-EBBAF1F57104}.Release|Any CPU.ActiveCfg = Release|Any CPU
